@@ -1,0 +1,31 @@
+/** @type {import('jest').Config} */
+module.exports = {
+  preset: 'react-native',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/__tests__'],
+  testMatch: ['**/*.test.ts', '**/*.test.tsx'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
+  transformIgnorePatterns: [
+    'node_modules/(?!(react-native|@react-native|@react-navigation|expo|expo-modules-core|expo-reanimated|zustand)/)',
+  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  collectCoverageFrom: [
+    'features/**/domain/**/*.ts',
+    'features/**/presentation/store/**/*.ts',
+    'shared/**/*.ts',
+    '!/**/*.d.ts',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: 70,
+    },
+  },
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1',
+  },
+};
